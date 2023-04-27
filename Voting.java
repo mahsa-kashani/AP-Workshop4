@@ -31,12 +31,12 @@ public class Voting {
         this.question = question;
     }
 
-    public HashMap<String, HashSet<Vote>> getChoices() {
-        return choices;
+    public ArrayList<String> getChoices() {
+        return new ArrayList<>(choices.keySet());
     }
 
-    public void setChoices(HashMap<String, HashSet<Vote>> choices) {
-        this.choices = choices;
+    public void createChoices(String choices) {
+        this.choices.put(choices , null);
     }
 
     public boolean isAnonymous() {
