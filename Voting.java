@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Objects;
+import java.util.*;
 
 public class Voting {
     private int type;
@@ -74,5 +71,12 @@ public class Voting {
             }
         }
         voters.add(voter);
+    }
+    public void vote(Person person){
+        Vote myVote = new Vote(person , "ِdate is not important field in this project");
+        ArrayList<String> key = new ArrayList<>(choices.keySet());
+        int rand = new Random().nextInt(0 , key.size());
+        choices.get(key.get(rand)).add(myVote);
+        voters.add(person);
     }
 }
