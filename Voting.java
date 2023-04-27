@@ -16,4 +16,44 @@ public class Voting {
         this.isAnonymous = isAnonymous;
         this.voters = voters;
     }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public HashMap<String, HashSet<Vote>> getChoices() {
+        return choices;
+    }
+
+    public void setChoices(HashMap<String, HashSet<Vote>> choices) {
+        this.choices = choices;
+    }
+
+    public boolean isAnonymous() {
+        return isAnonymous;
+    }
+
+    public void setAnonymous(boolean anonymous) {
+        isAnonymous = anonymous;
+    }
+
+    public ArrayList<Person> getVoters() {
+        return voters;
+    }
+
+    public void setVoters(ArrayList<Person> voters) {
+        this.voters = voters;
+    }
 }
