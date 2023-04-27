@@ -65,4 +65,14 @@ public class Voting {
         Voting voting = (Voting) o;
         return type == voting.type && isAnonymous == voting.isAnonymous && Objects.equals(question, voting.question) && Objects.equals(choices, voting.choices) && Objects.equals(voters, voting.voters);
     }
+    public void vote(Person voter , ArrayList<String> voter_choices){
+        Vote myVote = new Vote(voter , "ِdate is not important field in this project");
+        for(String myChoice : voter_choices){
+            for(String choice : choices.keySet()){
+                if(myChoice.equals(choice))
+                    choices.get(choice).add(myVote);
+            }
+        }
+        voters.add(voter);
+    }
 }
