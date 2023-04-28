@@ -6,4 +6,12 @@ public class votingSystem {
     public votingSystem(ArrayList<Voting> votingList) {
         this.votingList = votingList;
     }
+
+    public ArrayList<Voting> getVotingList() {
+        return votingList;
+    }
+    public Voting getVoting(int index){
+        return votingList.get(index);
+    }
+    
 }
