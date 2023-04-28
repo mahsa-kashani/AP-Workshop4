@@ -7,12 +7,12 @@ public class Voting {
     private boolean isAnonymous;
     private ArrayList<Person> voters;
 
-    public Voting(int type, String question, HashMap<String, HashSet<Vote>> choices, boolean isAnonymous, ArrayList<Person> voters) {
+    public Voting(int type, String question, ArrayList<String> choices, boolean isAnonymous) {
         this.type = type;
         this.question = question;
-        this.choices = choices;
+        for(String choice : choices)
+            createChoices(choice);
         this.isAnonymous = isAnonymous;
-        this.voters = voters;
     }
 
     public int getType() {
@@ -84,13 +84,15 @@ public class Voting {
         }
     }
     public void printVoters(){
-        for(String key : choices.keySet()){
-            ArrayList<Vote> keyVotes = new ArrayList<>(choices.get(key));
-            System.out.println("those who vote " + key + ":");
-            for(Vote keyVote : keyVotes){
-                if(voters.contains(keyVote.getVoter()))
+        if(!isAnonymous){
+            for(String key : choices.keySet()){
+                ArrayList<Vote> keyVotes = new ArrayList<>(choices.get(key));
+                System.out.println("those who vote " + key + ":");
+                for(Vote keyVote : keyVotes){
                     System.out.println(keyVote.getVoter().getFirstName() + " " + keyVote.getVoter().getLastName());
+                }
             }
         }
+
     }
 }
