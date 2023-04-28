@@ -3,9 +3,9 @@ import java.util.*;
 public class Voting {
     private int type;
     private String question;
-    private HashMap<String , HashSet<Vote>> choices;
+    private HashMap<String , HashSet<Vote>> choices = new HashMap<>();
     private boolean isAnonymous;
-    private ArrayList<Person> voters;
+    private ArrayList<Person> voters = new ArrayList<>();
 
     public Voting(int type, String question, ArrayList<String> choices, boolean isAnonymous) {
         this.type = type;
@@ -63,20 +63,33 @@ public class Voting {
         return type == voting.type && isAnonymous == voting.isAnonymous && Objects.equals(question, voting.question) && Objects.equals(choices, voting.choices) && Objects.equals(voters, voting.voters);
     }
     public void vote(Person voter , ArrayList<String> voter_choices){
-        Vote myVote = new Vote(voter , "ِdate is not important field in this project");
-        for(String myChoice : voter_choices){
-            for(String choice : choices.keySet()){
-                if(myChoice.equals(choice))
-                    choices.get(choice).add(myVote);
+        if(!isAnonymous){
+            if(type == 0 && voter_choices.size() > 1){
+                System.out.println("in this voting you can't choose more than one option");
             }
+            Vote myVote = new Vote(voter , "ِdate is not important field in this project");
+            for(String myChoice : voter_choices){
+                for(String choice : choices.keySet()){
+                    if(myChoice.equals(choice))
+                        choices.get(choice).add(myVote);
+                }
+            }
+            voters.add(voter);
         }
-        voters.add(voter);
+        else{
+            System.out.println("this voting is anonymous!");
+        }
     }
     public void vote(Person person){
-        Vote myVote = new Vote(person , "ِdate is not important field in this project");
-        ArrayList<String> key = new ArrayList<>(choices.keySet());
-        int rand = new Random().nextInt(0 , key.size());
-        choices.get(key.get(rand)).add(myVote);
+        if(isAnonymous){
+            Vote myVote = new Vote(person , "ِdate is not important field in this project");
+            ArrayList<String> key = new ArrayList<>(choices.keySet());
+            int rand = new Random().nextInt(0 , key.size());
+            choices.get(key.get(rand)).add(myVote);
+        }
+        else{
+            System.out.println("this voting is not anonymous!");
+        }
     }
     public void printResults(){
         for(String key : choices.keySet()){
@@ -93,6 +106,8 @@ public class Voting {
                 }
             }
         }
-
+        else{
+            System.out.println("this voting is anonymous!");
+        }
     }
 }
