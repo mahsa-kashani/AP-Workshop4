@@ -42,4 +42,11 @@ public class votingSystem {
     public void printVoters(int index){
         votingList.get(index).printVoters();
     }
+    public void printVoting(int index){
+        int i = 1;
+        System.out.println("question: " + votingList.get(index).getQuestion());
+        for(String choice : votingList.get(index).getChoices()){
+            System.out.println("option" + i++ + " : " + choice);
+        }
+    }
 }
