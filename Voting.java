@@ -36,7 +36,7 @@ public class Voting {
     }
 
     public void createChoices(String choices) {
-        this.choices.put(choices , null);
+        this.choices.put(choices , new HashSet<>());
     }
 
     public boolean isAnonymous() {
@@ -77,6 +77,20 @@ public class Voting {
         ArrayList<String> key = new ArrayList<>(choices.keySet());
         int rand = new Random().nextInt(0 , key.size());
         choices.get(key.get(rand)).add(myVote);
-        voters.add(person);
+    }
+    public void printResults(){
+        for(String key : choices.keySet()){
+            System.out.println(key + " -> " + choices.get(key).size());
+        }
+    }
+    public void printVoters(){
+        for(String key : choices.keySet()){
+            ArrayList<Vote> keyVotes = new ArrayList<>(choices.get(key));
+            System.out.println("those who vote " + key + ":");
+            for(Vote keyVote : keyVotes){
+                if(voters.contains(keyVote.getVoter()))
+                    System.out.println(keyVote.getVoter().getFirstName() + " " + keyVote.getVoter().getLastName());
+            }
+        }
     }
 }
