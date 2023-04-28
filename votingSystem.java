@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class votingSystem {
-    private ArrayList<Voting> votingList;
+    private ArrayList<Voting> votingList = new ArrayList<>();
 
     public votingSystem(ArrayList<Voting> votingList) {
         this.votingList = votingList;
