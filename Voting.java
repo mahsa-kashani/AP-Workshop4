@@ -83,4 +83,14 @@ public class Voting {
             System.out.println(key + " -> " + choices.get(key).size());
         }
     }
+    public void printVoters(){
+        for(String key : choices.keySet()){
+            ArrayList<Vote> keyVotes = new ArrayList<>(choices.get(key));
+            System.out.println("those who vote " + key + ":");
+            for(Vote keyVote : keyVotes){
+                if(voters.contains(keyVote.getVoter()))
+                    System.out.println(keyVote.getVoter().getFirstName() + " " + keyVote.getVoter().getLastName());
+            }
+        }
+    }
 }
