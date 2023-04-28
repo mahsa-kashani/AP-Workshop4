@@ -36,4 +36,7 @@ public class votingSystem {
     public void vote(int index , Person voter){
         votingList.get(index).vote(voter);
     }
+    public void printResults(int index){
+        votingList.get(index).printResults();
+    }
 }
