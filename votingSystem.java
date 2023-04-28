@@ -27,4 +27,7 @@ public class votingSystem {
     public int hashCode() {
         return Objects.hash(votingList);
     }
+    public void createVoting(String question , boolean isAnonymous , int type , ArrayList<String> choices){
+        votingList.add(new Voting(type , question , choices , isAnonymous));
+    }
 }
