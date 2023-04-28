@@ -30,4 +30,7 @@ public class votingSystem {
     public void createVoting(String question , boolean isAnonymous , int type , ArrayList<String> choices){
         votingList.add(new Voting(type , question , choices , isAnonymous));
     }
+    public void vote(int index , Person voter , ArrayList<String> voterChoices){
+        votingList.get(index).vote(voter , voterChoices);
+    }
 }
